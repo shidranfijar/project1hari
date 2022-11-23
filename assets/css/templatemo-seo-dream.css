@@ -182,7 +182,7 @@ body {
 .section-heading h6 {
   font-size: 15px;
   font-weight: 700;
-  color: #33ccc5;
+  color: #59ce93;
   text-transform: uppercase;
   margin-bottom: 15px;
 
@@ -200,7 +200,7 @@ body {
 
 .section-heading h2 em {
   font-style: normal;
-  color: #33ccc5;
+  color: #59ce93;
 }
 
 .section-heading h2 span {
@@ -209,7 +209,7 @@ body {
 
 .main-blue-button a {
   display: inline-block;
-  background-color: #4771cb;
+  background-color: #2ca847;
   font-size: 15px;
   font-weight: 400;
   color: #fff;
@@ -229,7 +229,7 @@ body {
 
 .main-green-button a {
   display: inline-block;
-  background-color: #33ccc5;
+  background-color: #2ca847;
   font-size: 15px;
   font-weight: 400;
   color: #fff;
@@ -255,7 +255,7 @@ header
 */
 
 .background-header {
-  background-color: #33ccc5!important;
+  background-color: #59ce93;!important;
   height: 80px!important;
   position: fixed!important;
   top: 0px;
@@ -290,7 +290,7 @@ header
 }
 
 .header-area {
-  background-color: #33ccc5;
+  background-color: #59ce93;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -958,8 +958,8 @@ Features Style
 }
 
 .features-item:hover {
-  background: rgb(51,204,197);
-  background: linear-gradient(105deg, rgba(51,204,197,1) 0%, rgba(8,141,195,1) 100%);
+  background: rgb(88, 219, 127);
+  background: linear-gradient(105deg, rgba(88, 219, 127) 0%, rgb(35, 104, 131) 100%);
 }
 
 .features-item:hover h4 {
@@ -1610,7 +1610,7 @@ footer p {
 }
 
 footer p a {
-  color: #33ccc5;
+  color: #59ce93;
   transition: all .5s;
 }
 
