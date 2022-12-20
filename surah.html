@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Alquran</title>
+
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&amp;display=swap"
+      rel="stylesheet">
+
+    <title>Baitul Quran | Ma'had 'Aly</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-seo-dream.css">
+    <link rel="stylesheet" href="assets/css/animated.css">
+    <link rel="stylesheet" href="assets/css/owl.css">
+    <!--
+
+TemplateMo 563 SEO Dream
+
+https://templatemo.com/tm-563-seo-dream
+
+-->
+
+  </head>
+  <style>
+  </style>
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<!-- kode source jquery -->
+
+<body>
+  <header class="header-area header-sticky wow slideInDown animated" data-wow-duration="0.75s" data-wow-delay="0s"
+    style="visibility: visible;-webkit-animation-duration: 0.75s; -moz-animation-duration: 0.75s; animation-duration: 0.75s;-webkit-animation-delay: 0s; -moz-animation-delay: 0s; animation-delay: 0s;">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <nav class="main-nav">
+            <!-- ***** Logo Start ***** -->
+            <a href="index.html" class="logo">
+              <h4><img src="assets/images/logo-icon.png" alt=""></h4>
+            </a>
+            <!-- ***** Logo End ***** -->
+            <!-- ***** Menu Start ***** -->
+            <ul class="nav">
+              <li class="scroll-to-section"><a href="#" id="get-data">surah</a></li>
+              <li class="scroll-to-section"><a href="#">ayat</a></li>
+              <li class="scroll-to-section">
+                <div class="main-blue-button"><a href="whatsapp://send?text=Hello&amp;phone=+6282377450068">Bisa
+                    dihubungi</a></div>
+              </li>
+            </ul>
+            <a class="menu-trigger">
+              <span>Menu</span>
+            </a>
+            <!-- ***** Menu End ***** -->
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="row" style="margin-top: 100px;">
+    <div class="col">
+      <h1>Nama surat</h1>
+    </div>
+    <div class="col">
+      <h1>ayat</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col" id="show-data"></div>
+    <div class="col" id="show-ayat"></div>
+  </div>
+
+
+
+
+
+  <script>
+    // bahasa jQuery
+    $(document).ready(() => {
+
+
+      // jQuery selector >>>> '#show-data'
+      const $showData = $('#show-data');
+      const $raw = $('pre');
+      
+      $('#get-data').on('click', (event) => {
+        //  jangan refresh halaman    
+        event.preventDefault();
+
+        $showData.text('Loading the JSON file.');
+
+        $.getJSON('https://api.alquran.cloud/v1/surah', (respon) => {
+          console.log(respon.code);
+          console.log(respon.status);
+          // mengatur ulang format respoon dari json
+          const markup =
+            respon.data
+              .map(item => `<li class="surat" data-idsurat="${item.number}">
+              Nama surat: ${item.number}: ${item.name}
+              </li>`)
+              .join('');
+
+
+          const list = $('<ul />').html(markup);
+
+          $showData.html(list);
+          $('.surat').on('click', function (event) {
+            console.log($(event.target).data("idsurat"));
+            // clik dari surat berubah jadi ayat
+
+            $showayat.text('Loading the JSON file.');
+
+            $.getJSON('https://api.alquran.cloud/v1/surah/' + $(event.target).data("idsurat") + '?offset=0&limit=10', (respon) => {
+              console.log(respon.code);
+              console.log(respon.status);
+              const markup =
+                respon.data.ayahs
+                  .map(item => `${item.text}: ${item.numberInSurah}`)
+                  .join('<br>');
+
+
+              const list = $('<ul />').html(markup);
+
+              $showayat.html(list);
+
+            });
+          });
+
+        });
+
+        $raw.text(JSON.stringify(data, undefined, 2));
+      });
+    });
+  </script>
+
+  <script>
+
+
+    const $showayat = $('#show-ayat');
+    const $raw = $('pre');
+
+
+  </script>
+
+</body>
+
+</html>
